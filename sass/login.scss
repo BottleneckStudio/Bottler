@@ -1,0 +1,90 @@
+
+
+// BLOCK
+
+.login{
+    background: $login-bg;
+    height: 100%;
+    width: 100%;
+    padding: 10% 0;
+}
+
+// ELEMENTS
+
+.login__notif{
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background: $black;
+    text-align: center;
+    color: $white;
+    &.active{
+        top: 0;
+    }
+}
+
+.login__card{
+    padding: 40px 20px;
+    width: 360px;
+    margin: 0 auto;
+    background: $white;
+}
+
+.login__logo{
+    width: 100%;
+    padding: 10px;
+    img{
+        display: block;
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
+    }
+}
+
+.login__inpt-grp{
+    padding: 10px;
+    input{
+        width: 100%;
+        border: 1px solid $input-border-gray;
+        padding: 10px;
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+}
+
+.login__btn-grp{
+    padding: 10px;
+    button{
+        width: 100%;
+        padding: 20px;
+        font-size: 16px;
+        text-align: center;
+        position: relative;
+        background: $black;
+        color: $white;
+        &:hover{
+            background: $gray;
+        }
+    }
+}
+
+.login__footer{
+    padding: 10px;
+    text-align: center;
+}
+
+//BREAKPOINTS
+
+@media(max-width: 1024px){
+    //MODIFIERS
+    .login--mobile{
+        background: $white;
+        .login__card{
+            padding: 0px 20px;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

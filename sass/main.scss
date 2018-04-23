@@ -1,0 +1,35 @@
+@import 'colors.scss';
+@import 'texts.scss';
+@import 'shame.scss';
+@import 'buttons.scss';
+@import 'login.scss';
+@import 'dash.scss';
+
+*{
+    box-sizing: border-box;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+
+html, body{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1,h2,h3,h4,h5,h6,p{
+    margin: 0;
+}
+
+a{
+    display: block;
+    color: $black;
+    text-decoration: none;
+}
+
+i{
+    display: block;
+    margin: 0;
+}
