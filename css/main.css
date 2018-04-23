@@ -237,7 +237,8 @@ button {
     right: 0px;
     bottom: -230px;
     padding: 30px 10px 0 10px;
-    height: 250px; }
+    height: 250px;
+    z-index: 999; }
     .nav__el .el .el__dropdown .dropdown {
       border: 1px solid rgba(0, 0, 0, 0.1);
       border-radius: 5px;
