@@ -9,6 +9,11 @@
     box-sizing: border-box;
     outline: none;
     transition: all 0.3s ease-in-out;
+    &::after{
+        content: "";
+        display: block;
+        clear: both;
+    }
 }
 
 html, body{
