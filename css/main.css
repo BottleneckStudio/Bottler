@@ -105,17 +105,19 @@ button {
     display: block;
     clear: both; }
 
-.viewport__main-elements {
+.main__board {
   height: calc(100vh - 63px);
   width: 100%;
-  background: #f7f7f7; }
+  background: #f7f7f7;
+  position: relative; }
 
 .viewport__sidebar {
   width: 20%;
   height: 100%;
   float: left;
   background: #000;
-  overflow: hidden; }
+  overflow: hidden;
+  position: fixed; }
 
 .sidebar__logo {
   width: 100%;
@@ -133,8 +135,7 @@ button {
   .sidebar__nav .nav__links {
     list-style: none;
     padding: 0;
-    width: 100%;
-    min-width: 300px; }
+    width: 100%; }
     .sidebar__nav .nav__links li {
       width: 100%;
       color: #fff;
@@ -176,9 +177,34 @@ button {
         .sidebar__nav .nav__links li .link__notif .notif.delayed {
           background: #e26363; }
 
+.sidebar__footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  padding: 10px; }
+  .sidebar__footer .footer__links {
+    padding: 0;
+    list-style: none;
+    width: 150px;
+    margin: 0 auto; }
+    .sidebar__footer .footer__links::after {
+      clear: both;
+      content: "";
+      display: block; }
+    .sidebar__footer .footer__links li {
+      width: 33.33%;
+      float: left; }
+      .sidebar__footer .footer__links li a {
+        color: #fff;
+        display: block;
+        width: 100%;
+        text-align: center; }
+
 .viewport__main {
   width: 80%;
   float: left;
+  right: 0;
+  position: fixed;
   overflow: hidden; }
 
 .nav__el.left {
@@ -262,20 +288,45 @@ button {
   width: 300px; }
 
 .viewport--sidebar.on .viewport__sidebar {
-  width: 20%; }
+  width: 20%;
+  left: 0; }
 .viewport--sidebar.on .viewport__main {
   width: 80%; }
 .viewport--sidebar.off .viewport__sidebar {
-  width: 0%; }
+  left: -100%; }
 .viewport--sidebar.off .viewport__main {
   width: 100%; }
 
+.board__progressbar {
+  height: 2px;
+  background: #000;
+  position: absolute; }
+
+.board__nav {
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+  .board__nav::after {
+    content: "";
+    display: block;
+    clear: both; }
+  .board__nav .nav__el {
+    padding: 20px;
+    float: left; }
+    .board__nav .nav__el.right {
+      float: right; }
+
 @media (max-width: 1024px) {
-  .viewport__main-elements {
+  .main__board {
     height: calc(100vh - 125px) !important; }
+
+  .el__notif {
+    top: 20px !important;
+    right: 10px !important; }
 
   .viewport--mobile .viewport__main {
     width: 100% !important; }
+  .viewport--mobile .viewport__sidebar {
+    z-index: 1000; }
   .viewport--mobile.on .viewport__sidebar {
     position: fixed;
     top: 0;
@@ -283,6 +334,23 @@ button {
     left: 0; }
   .viewport--mobile.off .viewport__sidebar {
     left: -100%; }
+
+  .user:hover .el__dropdown, .notification:hover .el__dropdown, .message:hover .el__dropdown {
+    bottom: 0px !important; }
+
+  .el__dropdown {
+    display: block !important;
+    height: calc(100vh - 125px) !important;
+    width: 100% !important;
+    position: fixed !important;
+    bottom: -100% !important;
+    padding: 0 !important; }
+    .el__dropdown .dropdown {
+      border-radius: 0px !important;
+      height: 100%;
+      border: 0px; }
+    .el__dropdown .dropdown::after {
+      display: none !important; }
 
   .el--mobile {
     width: 100%; }

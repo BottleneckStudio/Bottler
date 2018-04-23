@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/grid.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="shortcut icon" href="resources/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="resources/svg/bottle.svg" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
   </head>
@@ -25,26 +26,33 @@
                         <i class="link__icon far fa-folder"></i>
                         <a href="" class="link__text text--white">personal</a>
                         <div class="link__notif">
-                            <div class="notif done on">1</div>
-                            <div class="notif warning on">2</div>
-                            <div class="notif delayed on">10</div>
+                            <div class="notif done ">1</div>
+                            <div class="notif warning ">2</div>
+                            <div class="notif delayed ">10</div>
                         </div>
                     </li>
                     <li>
                         <i class="link__icon far fa-folder"></i>
                         <a href="" class="link__text text--white">rebanse</a>
                         <div class="link__notif">
-                            <div class="notif done on">30</div>
+                            <div class="notif done">30</div>
                         </div>
                     </li>
                     <li>
                         <i class="link__icon far fa-folder"></i>
                         <a href="" class="link__text text--white">augmented</a>
                         <div class="link__notif">
-                            <div class="notif warning on">20</div>
-                            <div class="notif delayed on">70</div>
+                            <div class="notif warning">20</div>
+                            <div class="notif delayed on">3</div>
                         </div>
                     </li>
+                </ul>
+            </div>
+            <div class="sidebar__footer">
+                <ul class="footer__links">
+                    <li><a href=""><i class="fab fa-facebook"></i></a></li>
+                    <li><a href=""><i class="fab fa-github-alt"></i></a></li>
+                    <li><a href=""><i class="fab fa-twitter"></i></a></li>
                 </ul>
             </div>
         </div>
@@ -85,16 +93,10 @@
                             <div class="dropdown">
                                 <ul>
                                     <li>
-                                        profile
+                                        Task #11 is finished
                                     </li>
                                     <li>
-                                        projects
-                                    </li>
-                                    <li>
-                                        collaborators
-                                    </li>
-                                    <li>
-                                        settings
+                                        Task #2 is delayed
                                     </li>
                                 </ul>
                             </div>
@@ -124,8 +126,15 @@
                     </div>
                 </div>
             </div>
-            <div class="viewport__main-elements">
-                
+            <div class="main__board">
+                <div class="board__progressbar" style="width: 0%"></div>
+                <div class="board__nav">
+                    <div class="nav__el"><i class="fas fa-angle-left"></i></div>
+                    <div class="nav__el">Project Name</div>
+                    <div class="nav__el"><i class="far fa-user"></i><span> 4 </span></div>
+                    <div class="nav__el"><i class="fas fa-map-pin"></i><span> 5 </span></div>
+                    <div class="nav__el right"><i class="fas fa-cog"></i><span> options </span></div>
+                </div>
             </div>
         </div>
     </div>  

@@ -22,10 +22,11 @@
     }
 }
 
-.viewport__main-elements{
+.main__board{
     height: calc(100vh - 63px);
     width: 100%;
     background: $login-bg;
+    position: relative;
 }
 
 
@@ -37,6 +38,7 @@
     float: left;
     background: $black;
     overflow: hidden;
+    position: fixed;
 }
 
 .sidebar__logo{
@@ -61,7 +63,6 @@
         list-style: none;
         padding: 0;
         width: 100%;
-        min-width: 300px;
         li{
             width: 100%;
             color: $white;
@@ -118,9 +119,39 @@
     
 }
 
+.sidebar__footer{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    padding: 10px;
+    .footer__links{
+        padding: 0;
+        list-style: none;
+        width: 150px;
+        margin: 0 auto;
+        &::after{
+            clear: both;
+            content: "";
+            display: block;
+        }
+        li{
+            width: 33.33%;
+            float: left;
+            a{
+                color: $white;
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+        }
+    }
+}
+
 .viewport__main{
     width: 80%;
     float: left;
+    right: 0;
+    position: fixed;
     overflow: hidden;
 }
 
@@ -237,6 +268,7 @@
     &.on{
         .viewport__sidebar{
             width: 20%;
+            left: 0;
         }
         .viewport__main{
             width: 80%;
@@ -244,13 +276,35 @@
     }
     &.off{
         .viewport__sidebar{
-            width: 0%;
+            left: -100%;
         }
         .viewport__main{
             width: 100%;
         } 
     }
+}
 
+.board__progressbar{
+    height: 2px;
+    background: $black;
+    position: absolute;
+}
+
+.board__nav{
+    width: 100%;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    &::after{
+        content: "";
+        display: block;
+        clear: both;
+    }
+    .nav__el{
+        padding: 20px;
+        float: left;
+        &.right{
+            float: right
+        }
+    }
 }
 
 
@@ -260,8 +314,15 @@
 
     // BLOCK 
 
-    .viewport__main-elements{
+    .main__board{
         height: calc(100vh - 125px) !important;
+    }
+
+    // ELEMENTS
+
+    .el__notif{
+        top: 20px !important;
+        right: 10px !important;
     }
 
     // MODIFIERS
@@ -269,6 +330,9 @@
     .viewport--mobile{
         .viewport__main{
             width: 100% !important;
+        }
+        .viewport__sidebar{
+            z-index: 1000;
         }
         &.on{
             .viewport__sidebar{
@@ -282,6 +346,28 @@
             .viewport__sidebar{
                 left: -100%;
             }
+        }
+    }
+
+    .user:hover .el__dropdown, .notification:hover .el__dropdown, .message:hover .el__dropdown, {
+        bottom: 0px !important;
+    }
+
+
+    .el__dropdown{
+        display: block !important;
+        height: calc(100vh - 125px) !important;
+        width: 100% !important;
+        position: fixed !important;
+        bottom: -100% !important;
+        padding: 0 !important;
+        .dropdown{
+            border-radius: 0px !important;
+            height: 100%;
+            border: 0px;
+        }
+        .dropdown::after{
+            display: none !important;
         }
     }
 
