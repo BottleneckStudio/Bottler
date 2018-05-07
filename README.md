@@ -1,6 +1,6 @@
 # BOTTLER
-
-## BUG/FEATURE TRACKER/UI KIT
+**BUG/FEATURE TRACKER/UI KIT**
+We are aiming to eliminate or reduce human errors when inputing git commands by providing the commands ourselves
 
 ### RULES
 
@@ -18,76 +18,82 @@
  - the **owner** can also work on the **feature/fix** he has created
 
 
-### INITIAL WORKFLOW
+### Creating a repository for a project
 
-* the **owner** himself will create the **repository** for the project with a **readme.md** file initialized
+the **owner** himself will create the **repository** for the project with a **readme.md** file initialized
 
-* The **system** will show the newly created project **repository**
-
-* The **system** will provide a git command that will create the two additional branches of that **repository**
+**we can create a repository directly from the terminal if we have github API access**
 
 ```sh
-$ git clone https://github.com/BottleneckStudio/CursorCola.git && cd CursorCola && git checkout -b develop && touch develop.md && git add -A && git 		commit -m “initial develop commit” && git push origin develop && git checkout master && git checkout -b fix && touch fix.md && git add -A && git commit -m  	“initial fix commit” && git push origin fix && git checkout master
+$ touch README.md && git init && git add README.md && git commit -m "first commit" && git remote add origin git@github.com:alexpchin/<reponame>.git && git push -u origin master
 ```
 
-**COMMENT//** We will automate this part with a CLI in the future since this might not be reliable
+The **system** will show the newly created project **repository**
 
-* the **owner** then can create a **feature** in the system with a **feature-feature-doc.md** initialized
+The **system** will provide a git command that will create the **develop** and **fix** branch on that **repository**
 
-* The **system** provides a git command for the **owner** to make that **feature** a branch in GitHub
+**sample git command**
+```sh
+$ git clone https://github.com/BottleneckStudio/CursorCola.git && cd CursorCola && git checkout -b develop && touch develop.md && git add -A && git commit -m “initial develop commit” && git push origin develop && git checkout master && git checkout -b fix && touch fix.md && git add -A && git commit -m “initial fix commit” && git push origin fix && git checkout master
+```
+
+### Creating a feature/fix Branch
+the **owner** should create a **feature/fix** branch in the system with a **feature-feature-doc.md/fix-bug-doc.md** initialized
+
+The **system** provides a git command for the **owner** to make that **feature/fix** a branch in github
 ```sh
 $ git checkout -b feature-feature && touch feature-feature-doc.md && git add -A && git commit -m “initial feature-feature commit” && git push origin feature-	feature && git checkout master
 ```
-**COMMENT//** we will find a way in the future to transfer the feature-feature-doc created in the system to GitHub with a single command, CLI maybe?
-	
-* the **system** will create a list of unassigned **features** for the **contributors** to choose from
+### Choosing a feature/fix task
+the **system** will create a list of unassigned **features/fix** for the **contributors** to choose from
 
-* if the **contributor** chooses a feature he will be given a git command by the system
+after the **contributor** chooses a **feature/fix** he will be given a git command by the system
 
-i.e if he has not cloned the repo yet use 
+**feature branches**
 ```sh
-$ git clone https://github.com/BottleneckStudio/CursorCola.git && git checkout -b feature-feature &&  git pull origin feature-feature. 
+$ git checkout -b feature-feature &&  git pull origin feature-feature 
 ```
-if he already cloned the repo then
+**fix branches**
 ```sh
-$ git pull origin master && git checkout -b feature-feature && git pull origin feature feature
+$ git checkout -b fix-bug && git pull origin fix-bug
 ```
-**COMMENT//** we will try to automate this in the future so that wherever the user is in the folder tree it will automatically create a branch in the project tree
+The **system** updates any **feature** that has been taken and assign them with the **contributor** who chose that **feature**
 
-* The **system** updates any **feature** that has been taken and assign them with the **contributor** who chose that **feature**
+### Creating a pull request
+a **contributor** will push to the branch his working and create a pull request to the corresponding branches, **develop** for the feature and **fix** for the fix
 
-* Everything is the same for the **fix** but change the command accordingly
+**" we will make the system create a git command that creates a pull request directly at the terminal like the one below "**
 
-* When a **contributor** has finished working he will push the changes on the **feature/fix** branch that he was working
-
-* The system will notify the **owner** of the change and will be given a command to pull that feature from GitHub 
-	
-* if it is a feature
+```sh
+git request-pull [-p] <start> <url> [<end>]
+```
+The system will notify the **owner** of the change and will be given a command to pull that feature from GitHub 
+**feature**
 ```sh
 $ git checkout develop && git checkout -b feature-feature && git pull origin feature-feature
 ```
-* if it is a fix
+**fix**
 ```sh	
 $ git checkout fix && git checkout -b fix-bug && git pull origin fix-bug
 ```
-**COMMENT//** the commands here assumes that the owner is at the master branch, we will improve this in the future
 
-* When the **owner** has approved a **feature/fix** the system will notify the **contributor** to create a pull request from the **feature-feature/fix-bug** branch that he is working to the corresponding branch **develop/fix**, after the contributor creates the request the **owner** will accept the merge and the system will mark the **feature-feature/fix-bug** as done and deletes that branch
+### Approving the feature/fix pull request
 
-**COMMENT//** we will find a way how we can create a pull request without ever going to GitHub 
+When the **owner** has approved a **feature/fix** the system will notify the **contributor** to create a pull request from the **feature-feature/fix-bug** branch that he is working to the corresponding branch **develop/fix**, 
 
-* The **owner** then creates a pull request from **develop/fix** to master
 
-**COMMENT//** we will find a way how we can create a pull request without ever going to GitHub 
-
-* All the **contributors** will be notified of the changes and will be asked to pull from the **master** branch to be updated, a command will be given
-
-if he has untracked changes
 ```sh
-$ git stash && git pull origin master && git stash pop
+git request-pull [-p] <start> <url> [<end>]
 ```
-if not
+
+the **owner** can accept the merge and the system will mark the **feature-feature/fix-bug** as done and deletes that branch
+
+**the system will provide a link to the pull request for now**
+
+All the **contributors** will be notified of the changes and will be asked to pull from the **master** branch to be updated, after the **owener** merges the **develop/fix** changes to **master**
+
+**all contributors will recieve a notification to pull from master**
 ```sh
 $ git pull origin master
 ```
-**COMMENT//** all commands here assumes that the contributor is in his branch, improve in the future
+**COMMENT//** all commands here assumes that the contributor is in the master branch
