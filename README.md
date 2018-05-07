@@ -38,9 +38,7 @@ $ touch README.md
 && git push -u origin master
 ```
 
-The **system** will show the newly created project **repository** in a list in the sidebar
-
-The **system** will provide a git command that will create the **develop** and **fix** branch on that **repository**
+The **system** will show the newly created project **repository** in the sidebar, Clicking on that **repository** The **system** will **prompt** you with a git command that will be used to  create the **develop** and **fix** branch on that **repository**
 
 **sample git command**
 ```sh
@@ -70,15 +68,13 @@ $ git checkout -b feature-feature
 && touch feature-feature-doc.md 
 && git add -A 
 && git commit -m “initial feature-feature commit” 
-&& git push origin feature-	feature 
+&& git push origin feature-feature 
 && git checkout master
 ```
 ### Choosing a feature/fix task
-the **system** will create a list of unassigned **features/fix** for the **contributors** to choose from
+the **system** will create a list of unassigned **features/fix** for the **contributors** to choose from. After the **contributor** chooses a **feature/fix** he will be given a git command by the **system**
 
-after the **contributor** chooses a **feature/fix** he will be given a git command by the system
-
-**feature branche**
+**feature branch**
 ```sh
 $ git checkout -b feature-feature 
 &&  git pull origin feature-feature 
@@ -91,9 +87,7 @@ $ git checkout -b fix-bug
 The **system** updates any **feature** that has been taken and assign them with the **contributor** who chose that **feature**
 
 ### For Review
-a **contributor** will push to the branch that he's working and tells the system that it is for **review**
-
-The system will notify the **owner** of the change and will be given a command to pull that feature from GitHub 
+a **contributor** will push to the branch that he's working and tells the system that it is for **review**, The **system** will notify the **owner** of the change and will be given a command to pull that feature from GitHub 
 
 **feature branch**
 ```sh
@@ -135,13 +129,16 @@ $ rm -rf feature-feature-doc.md
 && git request-pull [-p] <start> <url> [<end>]
 ````
 
+### Accepting a pull request
+
 the **owner** can accept the merge and the system will mark the **feature-feature/fix-bug** as done and deletes that branch
 
 **the system will provide a link to the pull request for now**
 
+### Staying updated with **master**
+
 All the **contributors** will be notified of the changes and will be asked to pull from the **master** branch to be updated
 
-**all contributors will recieve a notification to pull from master**
 ```sh
 $ git pull origin master
 ```
